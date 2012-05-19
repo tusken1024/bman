@@ -1,0 +1,35 @@
+@(contacts: List[Contact], contactForm: Form[Contact])
+
+@import helper._
+
+@main("Contact list") {
+    
+    <h1>@contacts.size() contact(s)</h1>
+    
+    <ul>
+        @for(contact <- contacts) {
+            <li>
+                @contact.nom @contact.telephone @contact.observation
+                
+                @form(routes.Application.deleteContact(contact.id)) {
+                    <input type="submit" value="Delete">
+                }
+            </li>
+        }
+    </ul>
+    
+    <h2>Add a new contact</h2>
+    
+    @form(routes.Application.newContact()) {
+        
+        @inputText(contactForm("tetet")) 
+
+        @inputText(contactForm("telephone")) 
+        
+        @textarea(contactForm("observation"))
+        
+        <input type="submit" value="Create">
+        
+    }
+    
+}
