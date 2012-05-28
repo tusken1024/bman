@@ -14,6 +14,7 @@ POST    /contacts/:id/delete	controllers.Application.deleteContact(id: Long)
 GET     /tasks                 	controllers.Application.tasks()
 POST    /tasks                  controllers.Application.newTask()
 POST    /tasks/:id/delete       controllers.Application.deleteTask(id: Long)
+GET     /jsontasks             	controllers.Application.jsonTasks()
 
 
 # Map static resources from the /public folder to the /assets URL path
