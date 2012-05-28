@@ -13,7 +13,7 @@ public class Application extends Controller {
 	public static Form<Contact> contactForm = form(Contact.class);
 
 	public static Result index() {
-		return ok("Hello World");
+		return redirect(routes.Application.tasks());
 	}
 
 	public static Result tasks() {
