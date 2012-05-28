@@ -1,8 +1,12 @@
 package controllers;
 
+import java.util.List;
+
 import models.Contact;
 import models.Task;
 import play.data.Form;
+import play.db.ebean.Model;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -18,6 +22,11 @@ public class Application extends Controller {
 
 	public static Result tasks() {
 		return ok(views.html.index.render(Task.all(), taskForm));
+	}
+
+	public static Result jsonTasks() {
+		List<Task> tasks = new Model.Finder(String.class, Task.class).all();
+		return ok(Json.toJson(tasks));
 	}
 
 	public static Result newTask() {
